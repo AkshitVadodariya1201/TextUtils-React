@@ -6,23 +6,33 @@ export default function TextForm(props) {
 
   const heandleUpClick = () => {
     let newText = text.toUpperCase();
-    setText(newText)
+    setText(newText);
+    props.showAlert("Converted to uppercase! ", "success")
   }
 
   const heandleLoClick = () => {
     let newText = text.toLowerCase();
     setText(newText)
+    props.showAlert("Converted to lowercase! ", "success")
   }
 
   const heandleClearClick = () => {
     let newText = " ";
     setText(newText)
+    props.showAlert("Text Clear! ", "success")
   }
 
   const heandleCopy = () => {
     let text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value)
+    props.showAlert("Copied to Clipboard! ", "success")
+  }
+  
+  const heandleExtraSpaces = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "))
+    props.showAlert("Extra space removed! ", "success")
   }
 
   const heandleOnChange = (event) => {
@@ -41,6 +51,7 @@ export default function TextForm(props) {
         <button className='btn btn-primary mx-1' onClick={heandleLoClick}>Convert to Lowercase</button>
         <button className='btn btn-primary mx-1' onClick={heandleClearClick}>Cleare Text</button>
         <button className='btn btn-primary mx-1' onClick={heandleCopy}>Copy Text</button>
+        <button className='btn btn-primary mx-1' onClick={heandleExtraSpaces}>Remove Extra Spaces</button>
       </div>
 
       <div className={`container my-3 text-${props.mode === "light" ? "dark" : "light"}`}>
