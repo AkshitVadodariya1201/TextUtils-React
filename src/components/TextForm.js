@@ -17,7 +17,7 @@ export default function TextForm(props) {
   }
 
   const heandleClearClick = () => {
-    let newText = " ";
+    let newText = "";
     setText(newText)
     props.showAlert("Text Clear! ", "success")
   }
@@ -25,10 +25,11 @@ export default function TextForm(props) {
   const heandleCopy = () => {
     let text = document.getElementById("myBox");
     text.select();
-    navigator.clipboard.writeText(text.value)
+    navigator.clipboard.writeText(text.value);
+    document.getSelection().removeAllRanges();
     props.showAlert("Copied to Clipboard! ", "success")
   }
-  
+
   const heandleExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "))
@@ -41,26 +42,26 @@ export default function TextForm(props) {
   return (
     <>
       <div className='container' style={{ color: props.mode === "light" ? "black" : "white" }}>
-        <h1>{props.heading}</h1>
+        <h1 className='mb-4'>{props.heading}</h1>
         <div className="mb-3">
           <textarea className="form-control" value={text} style={{
-            backgroundColor: props.mode === "light" ? "white" : "grey", color: props.mode === "light" ? "black" : "white"
+            backgroundColor: props.mode === "light" ? "white" : "#13466e", color: props.mode === "light" ? "black" : "white"
           }} onChange={heandleOnChange} id="myBox" rows="8"></textarea>
         </div>
-        <button className='btn btn-primary mx-1' onClick={heandleUpClick}>Convert to Uppercase</button>
-        <button className='btn btn-primary mx-1' onClick={heandleLoClick}>Convert to Lowercase</button>
-        <button className='btn btn-primary mx-1' onClick={heandleClearClick}>Cleare Text</button>
-        <button className='btn btn-primary mx-1' onClick={heandleCopy}>Copy Text</button>
-        <button className='btn btn-primary mx-1' onClick={heandleExtraSpaces}>Remove Extra Spaces</button>
+        <button disabled={text.length === 0} className='btn btn-primary mx-1 my-1' onClick={heandleUpClick}>Convert to Uppercase</button>
+        <button disabled={text.length === 0} className='btn btn-primary mx-1 my-1' onClick={heandleLoClick}>Convert to Lowercase</button>
+        <button disabled={text.length === 0} className='btn btn-primary mx-1 my-1' onClick={heandleClearClick}>Cleare Text</button>
+        <button disabled={text.length === 0} className='btn btn-primary mx-1 my-1' onClick={heandleCopy}>Copy Text</button>
+        <button disabled={text.length === 0} className='btn btn-primary mx-1 my-1' onClick={heandleExtraSpaces}>Remove Extra Spaces</button>
       </div>
 
       <div className={`container my-3 text-${props.mode === "light" ? "dark" : "light"}`}>
         <h2>Your text summary</h2>
-        <p>{text.split(" ").length} words and {text.length} charactes</p>
-        <p>{0.008 * text.split(" ").length} Minutes read</p>
+        <p>{text.split(" ").filter((element) => element.length !== 0).length} words and {text.length} charactes</p>
+        <p>{0.008 * text.split(" ").filter((element) => element.length !== 0).length} Minutes read</p>
 
         <h2>Preview</h2>
-        <p>{text.length > 0 ? text : "Enter something in the textbox above to preview it here"}</p>
+        <p>{text.length > 0 ? text : "Nothing to preview!"}</p>
       </div>
     </>
   )
