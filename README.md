@@ -1,30 +1,47 @@
-# Getting Started with Create React App
+# TextUtils - React Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+TextUtils is a versatile text manipulation tool built with React. It offers functionalities like word counting, character counting, converting text to uppercase or lowercase, and removing extra spaces. This application provides a user-friendly interface for performing various text manipulations efficiently.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Word Counter**: Counts the number of words in the provided text.
+- **Character Counter**: Counts the number of characters in the text.
+- **Uppercase to Lowercase**: Converts all the text from uppercase to lowercase.
+- **Lowercase to Uppercase**: Converts all the text from lowercase to uppercase.
+- **Remove Extra Spaces**: Removes any extra spaces found within the text.
 
-### `npm start`
+## Technology Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: React.js
+- **Styling**: Bootstrap 5
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Project Structure
 
-### `npm test`
+The project follows a standard React application structure, created using Create React App. Here's an overview of the main directories and files:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `public/`: Contains the HTML file and other assets that will be publicly served.
+- `src/`: Contains the React components and CSS files.
+    - `components/`: Contains reusable React components like `Navbar`, `Alert`, and `TextForm`.
+    - `App.js`: The main React component that renders the application.
+    - `index.js`: The entry point for the React application.
+- `build/`: Contains the production build of the application.
+- `package.json`: Defines the project dependencies and scripts.
 
-### `npm run build`
+## Setup and Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository to your local machine.
+2. Navigate to the project directory.
+3. Install the dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```sh
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Start the development server:
+
+```sh
+npm run start
+```
+
+5. Open [http://localhost:3000](http://localhost:3000) to view the application in your browser.
+
